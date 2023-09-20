@@ -1,9 +1,11 @@
-var express = require('express');
+var express = require("express");
+const { login } = require("../utils/userUtils");
 var router = express.Router();
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+router.post("/login", async (req, res, next) => {
+  const userInfo = await login(req.body);
+  if (userInfo.status === 404) next(userInfo);
+  else res.status(userInfo.status).json(userInfo.data);
 });
 
 module.exports = router;
