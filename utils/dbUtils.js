@@ -1,5 +1,5 @@
 const mysql = require("mysql2/promise");
-const { DB_HOST, DB_NAME, DB_USERNAME, DB_PASSWORD } = process.env;
+const { DB_HOST, DB_NAME, DB_USERNAME, DB_PASSWORD, DB_PORT } = process.env;
 module.exports.createConnection = async () => {
   try {
     const pool = await mysql.createPool({
