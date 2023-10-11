@@ -7,10 +7,11 @@ module.exports.createConnection = async () => {
       database: DB_NAME,
       user: DB_USERNAME,
       password: DB_PASSWORD,
+      port: DB_PORT,
     });
     const connection = await pool.getConnection();
     return connection;
   } catch (error) {
-    throw new Error(error.mesage);
+    throw new Error(error);
   }
 };
